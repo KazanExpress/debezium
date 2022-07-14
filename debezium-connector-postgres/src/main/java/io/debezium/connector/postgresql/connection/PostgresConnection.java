@@ -277,9 +277,13 @@ public class PostgresConnection extends JdbcConnection {
             throws SQLException {
         return prepareQueryAndMap("select * from pg_replication_slots where slot_name = ? and database = ? and plugin = ?", statement -> {
             statement.setString(1, slotName);
-            statement.setString(2, database);
+            statement.setString(2, prepareDatabaseNameForQueryForSlot(database));
             statement.setString(3, pluginName);
         }, map);
+    }
+
+    private String prepareDatabaseNameForQueryForSlot(String database) {
+        return database.replace("?prepareThreshold=0", "");
     }
 
     /**
