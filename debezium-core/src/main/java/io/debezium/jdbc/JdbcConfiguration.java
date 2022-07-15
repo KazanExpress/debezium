@@ -52,6 +52,8 @@ public interface JdbcConfiguration extends Configuration {
      */
     public static final Field PORT = Field.create("port", "Port of the database");
 
+    public static final Field PREPARE_THRESHOLD = Field.create("prepareThreshold","Prepare threshold");
+
     /**
      * A semicolon separated list of SQL statements to be executed when the connection to database is established.
      * Typical use-case is setting of session parameters. There is no default value.
@@ -78,7 +80,7 @@ public interface JdbcConfiguration extends Configuration {
      * The set of names of the pre-defined JDBC configuration fields, including {@link #DATABASE}, {@link #USER},
      * {@link #PASSWORD}, {@link #HOSTNAME}, and {@link #PORT}.
      */
-    public static Set<String> ALL_KNOWN_FIELDS = Collect.unmodifiableSet(Field::name, DATABASE, USER, PASSWORD, HOSTNAME, PORT, ON_CONNECT_STATEMENTS,
+    public static Set<String> ALL_KNOWN_FIELDS = Collect.unmodifiableSet(Field::name, DATABASE, USER, PASSWORD, HOSTNAME, PORT, PREPARE_THRESHOLD, ON_CONNECT_STATEMENTS,
             CONNECTION_FACTORY_CLASS, CONNECTION_TIMEOUT_MS);
 
     /**
