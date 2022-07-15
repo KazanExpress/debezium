@@ -17,9 +17,9 @@
     <url>https://debezium.io</url>
 
     <scm>
-        <connection>scm:git:git@github.com:debezium/debezium.git</connection>
-        <developerConnection>scm:git:git@github.com:debezium/debezium.git</developerConnection>
-        <url>https://github.com/debezium/debezium</url>
+        <connection>scm:git:git@github.com:KazanExpress/debezium.git</connection>
+        <developerConnection>scm:git:git@github.com:KazanExpress/debezium.git</developerConnection>
+        <url>https://github.com/KazanExpress/debezium</url>
         <tag>v1.9.5.Final</tag>
     </scm>
 
@@ -92,7 +92,7 @@
         <version.build-helper.plugin>1.9.1</version.build-helper.plugin>
 
         <!-- Which Maven Central infra should be used -->
-        <release.endpoint>https://s01.oss.sonatype.org/</release.endpoint>
+        <release.endpoint>https://nexus.kznexpress.ru/repository/maven-releases/</release.endpoint>
 
         <!-- Kafka and it's dependencies MUST reflect what the Kafka version uses -->
         <version.kafka>3.2.0</version.kafka>
@@ -166,16 +166,14 @@
     </modules>
 
     <distributionManagement>
-      <repository>
-        <id>ossrh</id>
-        <name>Sonatype Staging Repository</name>
-        <url>${release.endpoint}/service/local/staging/deploy/maven2</url>
-      </repository>
-      <snapshotRepository>
-        <id>ossrh</id>
-        <name>OSS Sonatype Nexus Snapshots</name>
-        <url>https://oss.sonatype.org/content/repositories/snapshots</url>
-      </snapshotRepository>
+        <snapshotRepository>
+            <id>ke-repo-snapshots</id>
+            <url>https://nexus.kznexpress.ru/repository/maven-snapshots/</url>
+        </snapshotRepository>
+        <repository>
+            <id>ke-repo-releases</id>
+            <url>https://nexus.kznexpress.ru/repository/maven-releases/</url>
+        </repository>
     </distributionManagement>
 
     <repositories>
@@ -231,11 +229,11 @@
                     <artifactId>maven-release-plugin</artifactId>
                     <version>${version.release.plugin}</version>
                 </plugin>
-                <plugin>
-                    <groupId>org.sonatype.plugins</groupId>
-                    <artifactId>nexus-staging-maven-plugin</artifactId>
-                    <version>${version.staging.plugin}</version>
-                </plugin>
+<!--                <plugin>-->
+<!--                    <groupId>org.sonatype.plugins</groupId>-->
+<!--                    <artifactId>nexus-staging-maven-plugin</artifactId>-->
+<!--                    <version>${version.staging.plugin}</version>-->
+<!--                </plugin>-->
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-surefire-plugin</artifactId>
