@@ -165,16 +165,14 @@
     </modules>
 
     <distributionManagement>
-      <repository>
-        <id>ossrh</id>
-        <name>Sonatype Staging Repository</name>
-        <url>${release.endpoint}/service/local/staging/deploy/maven2</url>
-      </repository>
-      <snapshotRepository>
-        <id>ossrh</id>
-        <name>OSS Sonatype Nexus Snapshots</name>
-        <url>https://oss.sonatype.org/content/repositories/snapshots</url>
-      </snapshotRepository>
+        <snapshotRepository>
+            <id>ke-repo-snapshots</id>
+            <url>https://nexus.kznexpress.ru/repository/maven-snapshots/</url>
+        </snapshotRepository>
+        <repository>
+            <id>ke-repo-releases</id>
+            <url>https://nexus.kznexpress.ru/repository/maven-releases/</url>
+        </repository>
     </distributionManagement>
 
     <repositories>
@@ -281,16 +279,16 @@
                     <releaseProfiles>docs,assembly,release-sign-artifacts,release</releaseProfiles>
                 </configuration>
             </plugin>
-            <plugin>
-                <groupId>org.sonatype.plugins</groupId>
-                <artifactId>nexus-staging-maven-plugin</artifactId>
-                <extensions>true</extensions>
-                <configuration>
-                    <serverId>ossrh</serverId>
-                    <nexusUrl>${release.endpoint}</nexusUrl>
-                    <autoReleaseAfterClose>false</autoReleaseAfterClose>
-                </configuration>
-            </plugin>
+<!--            <plugin>-->
+<!--                <groupId>org.sonatype.plugins</groupId>-->
+<!--                <artifactId>nexus-staging-maven-plugin</artifactId>-->
+<!--                <extensions>true</extensions>-->
+<!--                <configuration>-->
+<!--                    <serverId>ossrh</serverId>-->
+<!--                    <nexusUrl>${release.endpoint}</nexusUrl>-->
+<!--                    <autoReleaseAfterClose>false</autoReleaseAfterClose>-->
+<!--                </configuration>-->
+<!--            </plugin>-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>

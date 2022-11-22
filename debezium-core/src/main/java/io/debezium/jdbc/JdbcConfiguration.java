@@ -52,7 +52,7 @@ public interface JdbcConfiguration extends Configuration {
      */
     public static final Field PORT = Field.create("port", "Port of the database");
 
-    public static final Field PREPARE_THRESHOLD = Field.create("prepareThreshold","Prepare threshold");
+    public static final Field PREPARE_THRESHOLD = Field.create("prepareThreshold", "Prepare threshold");
 
     /**
      * A semicolon separated list of SQL statements to be executed when the connection to database is established.
